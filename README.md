@@ -4,11 +4,12 @@
 
 ## 📋 Summary
 - [Architecture Overview](#-architecture-overview)
+- [Production Considerations](#-production-considerations)
 - [Key Features & Design Decisions](#-key-features--design-decisions)
 - [Getting Started](#-getting-started)
 - [API Documentation](#-api-documentation)
 - [Performance & Resilience](#-performance--resilience)
-- [Production Considerations](#-production-considerations)
+- [Key Takeaways](#-key-takeaways)
 
 ## 🏗️ Architecture Overview
 
@@ -36,6 +37,46 @@ take a look into some diagrams that illustrate the main flows:
 1. **🏎️ Redis Cache** - Sub-millisecond response (if available and not expired)
 2. **🌐 External API** - With retry and circuit breaker protection (primary source)
 3. **💾 MongoDB Fallback** - When circuit breaker is open (ensures availability)
+
+## 🚨 Production Considerations
+
+### Challenge Requirements vs Production Best Practices
+
+**⚠️ Important Note**: The challenge specifically asks to:
+- Get **all results** from the paginated external API
+- Iterate through **all pages** until complete
+- Return **all contacts** in a single response
+
+**Production Consideration**: In a real-world scenario, this endpoint would implement pagination to prevent:
+- DoS attacks with large datasets
+- Memory exhaustion
+- Timeout issues
+- Poor user experience
+
+For this challenge, I prioritized meeting the exact requirements: **fetch all external API pages and return everything at once**.
+
+### ?? Documented Warnings & Future Enhancements
+
+I've placed some comments along the code and some of them are talking about
+potential improvements or warnings for production readiness, inside comments
+you're going to find something like this:
+
+To enjoy the javadocs commenting reading I strongly recommend you to open it in Intellij.
+```java
+/**
+ * <strong>⚠️ Production Consideration:</strong>
+ * <blockquote>
+ * Pagination should be implemented to prevent potential DoS attacks and performance issues
+ * with large datasets. Currently returns all contacts since it's a requirement.
+ * </blockquote>
+ */
+
+```
+### ??️ Security Considerations
+- In a real daily work, I would consider using AWS Secrets Manager or HashiCorp Vault for managing sensitive configuration like API tokens.
+- In a real daily work, I would also consider some feature flag strategies along with circuit breaker to close or open it manually
+- For production I would implement an authorization layer with roles, however, for this challenge I kept it simple.
+  Also, I would consider placing authorization centralized in a microservice or as plugin in gateway (like kong).
 
 ## 🎯 Key Features & Design Decisions
 
@@ -204,30 +245,6 @@ open build/reports/tests/test/index.html
 3. **Database Fallback**: Always-available cached dataset
 4. **Graceful Degradation**: Service continues during partial outages
 
-## 🚨 Production Considerations
-
-### Documented Warnings & Future Enhancements
-
-I've placed some comments along the code and some of them are talking about 
-potential improvements or warnings for production readiness, inside comments
-you're going to find something like this:
-
-To enjoy the javadocs commenting reading I strongly recommend you to open it in Intellij.
-```java
-/**
- * <strong>⚠️ Production Consideration:</strong>
- * <blockquote>
- * Pagination should be implemented to prevent potential DoS attacks and performance issues
- * with large datasets. Currently returns all contacts since it's a requirement.
- * </blockquote>
- */
-
-```
-### Security Considerations
-- In a real daily work, I would consider using AWS Secrets Manager or HashiCorp Vault for managing sensitive configuration like API tokens.
-- In a real daily work, I would also consider some feature flag strategies along with circuit breaker to close or open it manually
-- For production I would implement an authorization layer with roles, however, for this challenge I kept it simple.
-  Also, I would consider placing authorization centralized in a microservice or as plugin in gateway (like kong).
 ## 🎯 Key Takeaways
 
 ### Design Principles Applied
