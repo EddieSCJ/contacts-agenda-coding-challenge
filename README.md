@@ -55,7 +55,7 @@ take a look into some diagrams that illustrate the main flows:
 
 For this challenge, I prioritized meeting the exact requirements: **fetch all external API pages and return everything at once**.
 
-### ?? Documented Warnings & Future Enhancements
+### 📝 Documented Warnings & Future Enhancements
 
 I've placed some comments along the code and some of them are talking about
 potential improvements or warnings for production readiness, inside comments
@@ -72,7 +72,7 @@ To enjoy the javadocs commenting reading I strongly recommend you to open it in 
  */
 
 ```
-### ??️ Security Considerations
+### 🛡️ Security Considerations
 - In a real daily work, I would consider using AWS Secrets Manager or HashiCorp Vault for managing sensitive configuration like API tokens.
 - In a real daily work, I would also consider some feature flag strategies along with circuit breaker to close or open it manually
 - For production I would implement an authorization layer with roles, however, for this challenge I kept it simple.
