@@ -94,7 +94,7 @@ tasks.test {
 sonar {
     properties {
         property("sonar.projectKey", "EddieSCJ_contacts-agenda-coding-challenge")
-        property("sonar.organization", "eddiescj")
+        property("sonar.organization", "eddiescj-go")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
         property("sonar.junit.reportPaths", "build/test-results/test")
