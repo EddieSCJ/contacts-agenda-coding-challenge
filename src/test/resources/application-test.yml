@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: contacts-agenda-test
+
+  main:
+    allow-bean-definition-overriding: true
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/contacts_agenda_test}
+      database: contacts-test
+      auto-index-creation: true
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      ssl:
+        enabled: false
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 300000  # 5 minutes
+
+  cloud:
+    aws:
+      secretsmanager:
+        enabled: false
+
+resilience4j:
+  retry:
+    instances:
+      kenectApi:
+        max-attempts: 3
+        wait-duration: 100ms
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        randomized-wait-factor: 0.1
+
+  circuitbreaker:
+    instances:
+      kenectApi:
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        wait-duration-in-open-state: 5s
+        failure-rate-threshold: 70
+        automatic-transition-from-open-to-half-open-enabled: true
+
+redis-cache:
+  caches:
+    - name: contactPages
+      ttl: 5m
+
+kenect:
+  api:
+    connect-timeout: 1s
+    read-timeout: 1s
+    host: http://localhost:8089
+    token: test-token
+    default-page-size: 1000
