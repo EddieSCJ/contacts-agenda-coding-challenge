@@ -1,4 +1,4 @@
-# 📚 Contacts Agenda API - Kenect Labs Take-Home
+# 📚 Contacts Agenda API - Take Home Coding Challenge
 
 ## 📋 Summary
 - [Architecture Overview](#-architecture-overview)
