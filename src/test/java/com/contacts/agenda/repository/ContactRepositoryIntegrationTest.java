@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ContactRepositoryIntegrationTest {
 
     @Container
-    static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7")
+    static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:4.4.6")
             .withExposedPorts(27017);
 
     @DynamicPropertySource

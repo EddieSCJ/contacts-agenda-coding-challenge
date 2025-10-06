@@ -193,7 +193,7 @@ open build/reports/tests/test/index.html
 ## ⚡ Performance & Resilience
 
 ### Performance Optimizations
-1. **Redis Caching**: 5-minute TTL reduces API calls by ~95%
+1. **Redis Caching**: 5-minute TTL to reduce API calls
 2. **Smart Pagination**: Minimizes network requests (max 2 API calls)
 
 ### Resilience Features
