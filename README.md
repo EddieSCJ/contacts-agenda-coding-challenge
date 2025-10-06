@@ -1,4 +1,6 @@
-# 📚 Contacts Agenda API - Take Home Coding Challenge
+# 📚 Contacts Agenda API - Take Home Coding Challenge 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=EddieSCJ_contacts-agenda-coding-challenge&metric=coverage)](https://sonarcloud.io/summary/new_code?id=EddieSCJ_contacts-agenda-coding-challenge)
+
 
 ## 📋 Summary
 - [Architecture Overview](#-architecture-overview)
