@@ -246,7 +246,7 @@ it could break or down the external API if they have a very low rate limit or to
 
 ---
 
-**Built with ❤️ for Kenect Labs Engineering Challenge**
+**Built with ❤️ for Engineering Challenge**
 
 Have in mind I'm anxious to hear your feedback, so please let me know if you have any questions or suggestions!
 
