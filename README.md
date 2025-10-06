@@ -142,9 +142,6 @@ java -jar build/libs/contacts-agenda-0.0.1-SNAPSHOT.jar
 
 ### 4. Verify Setup
 ```bash
-# Health check
-curl http://localhost:8080/actuator/health
-
 # Get contacts
 curl http://localhost:8080/contacts
 
