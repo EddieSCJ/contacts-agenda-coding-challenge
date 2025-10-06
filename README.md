@@ -34,7 +34,7 @@ take a look into some diagrams that illustrate the main flows:
 <img src="docs/circuit-breaker-behavior.svg" alt="Circuit Breaker States and Transitions" width="700">
 
 ### Data Source Priority
-1. **🏎️ Redis Cache** - Sub-millisecond response (if available and not expired)
+1. **🏎️ Redis Cache** - very fast millisecond response (if available and not expired)
 2. **🌐 External API** - With retry and circuit breaker protection (primary source)
 3. **💾 MongoDB Fallback** - When circuit breaker is open (ensures availability)
 
@@ -82,7 +82,7 @@ To enjoy the javadocs commenting reading I strongly recommend you to open it in 
 
 ### 🧠 Intelligent Pagination Strategy
 
-**Problem**: External APIs often have unpredictable dataset sizes. Making too many requests causes rate limiting; making too few requests is inefficient.
+**Problem**: External APIs often have unpredictable dataset sizes. Making too many requests causes rate limiting, as so making too few requests is inefficient.
 
 **Solution**: Smart 2-request optimization strategy:
 
